@@ -29,5 +29,3 @@ def clean_data():
     df = df.drop_duplicates()
 
     return df
-print(clean_data().barrio.value_counts())
-print(clean_data().barrio.value_counts().sort_index())
