@@ -26,6 +26,8 @@ def clean_data():
     df['estrato_ciudadano'] = df['estrato'].astype(int)
     df['monto_del_credito'] = df['monto_del_credito'].str.strip(' ').str.replace('[ ,$]', '', regex=True).str.replace('\.00','',regex=True).astype(float)
     df['fecha_de_beneficio'] = pd.to_datetime(df['fecha_de_beneficio'], format='%d/%m/%Y', errors='coerce').fillna(pd.to_datetime(df['fecha_de_beneficio'], format='%Y/%m/%d', errors='coerce'))
+    replacement_dict = {'bel¿n': 'belén', 'antonio nari¿o': 'antonio nariño'}
+    df['barrio'] = df['barrio'].replace(replacement_dict)
     df = df.dropna()
     df = df.drop_duplicates()
 
